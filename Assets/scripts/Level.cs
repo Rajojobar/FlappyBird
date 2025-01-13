@@ -2,20 +2,16 @@ using UnityEngine;
 
 public class Level : MonoBehaviour
 {
-    public float Speed;
-    public Vector3 initPosition;
-    public float deadZone;
+
+    public GameObject tuyauPrefab;
+    public GameObject tuyauSpawnGO;
     
-    void Start()
+
+
+    [ContextMenu("Spawn un tuyau")]
+    public void SpawnTuyau()
     {
-        initPosition=transform.position;
+        Instantiate(tuyauPrefab, tuyauSpawnGO.transform);
     }
 
-    void Update(){
-        transform.position += new Vector3(Speed * Time.deltaTime, 0f);
-        if (transform.position.x < deadZone){
-            transform.position = initPosition;
-        }
-
-    }
 }
