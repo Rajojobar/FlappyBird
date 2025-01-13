@@ -27,6 +27,11 @@ private void Start()
 
     }
 
+    public void killPlayer(){
+
+        OnPlayerDie();
+    }
+    
     public void Update()
     {
         if(Input.GetKeyDown(KeyCode.R)){

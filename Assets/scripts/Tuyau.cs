@@ -9,6 +9,8 @@ public class Tuyau : MonoBehaviour
         if(_joueur != null)
         {
             _joueur.gameObject.SetActive(false);
+            FindObjectOfType<GameManager>().killPlayer();
+
         }
     }
 }
