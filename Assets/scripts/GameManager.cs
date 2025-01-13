@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -7,6 +8,12 @@ public class GameManager : MonoBehaviour
 public TextMeshProUGUI scoreText;
 
     public int Score;
+    bool aCommence;
+
+private void Start()
+{
+    Time.timeScale = 0f;
+}
 
     public void AddScore(){
         Score++;
@@ -14,4 +21,20 @@ public TextMeshProUGUI scoreText;
         Debug.Log("+1:"+Score);
     }
 
+    public void OnPlayerDie()
+    {
+        Time.timeScale = 0f;
+
+    }
+
+    public void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.R)){
+            SceneManager.LoadScene("SampleScene");
+        }
+
+        if(Input.GetKeyDown(KeyCode.Space)){
+            Time.timeScale = 1f;
+        }
+    }
 }
