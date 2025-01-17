@@ -14,4 +14,9 @@ public class Level : MonoBehaviour
         Instantiate(tuyauPrefab, tuyauSpawnGO.transform);
     }
 
+
+    void Start(){
+        SpawnTuyau();
+    }
+
 }

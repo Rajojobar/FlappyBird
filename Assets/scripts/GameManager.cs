@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
 
@@ -10,10 +10,16 @@ public TextMeshProUGUI scoreText;
     public int Score;
     bool aCommence;
 
-private void Start()
-{
-    Time.timeScale = 0f;
-}
+    public CanvasGroup ingameMenu;
+    public CanvasGroup gameOverMenu;
+    public Button restartButton;
+    
+    private void Start()
+    {
+        Time.timeScale = 0f;
+        gameOverMenu.gameObject.SetActive(false);
+        restartButton.onClick.AddListener( () => restartGame());
+    }
 
     public void AddScore(){
         Score++;
@@ -21,10 +27,23 @@ private void Start()
         Debug.Log("+1:"+Score);
     }
 
+    void registerScore(){
+        int _currentBest = PlayerPrefs.GetInt("best_score");
+        if (Score > _currentBest){
+            PlayerPrefs.SetInt("best_score", Score);
+        }
+    }
+
+    void restartGame(){
+            SceneManager.LoadScene("SampleScene");
+    }
+
     public void OnPlayerDie()
     {
         Time.timeScale = 0f;
-
+        registerScore();
+        scoreText.text = "You died and meilleur score est "+PlayerPrefs.GetInt("best_score");
+        gameOverMenu.gameObject.SetActive(true);
     }
 
     public void killPlayer(){
