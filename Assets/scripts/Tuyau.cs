@@ -6,6 +6,16 @@ public class Tuyau : MonoBehaviour
     public float Speed;
     public float deadZone = -11f;
 
+
+    void Start()
+    {
+        float randomY = Random.Range(-1.5f, 1.5f);
+
+        Vector3 newPosition = transform.position;
+        newPosition.y += randomY;
+        transform.position = newPosition;
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Joueur _joueur = collision.gameObject.GetComponent<Joueur>();
@@ -16,6 +26,7 @@ public class Tuyau : MonoBehaviour
 
         }
     }
+
 
     void Update(){
         transform.position += new Vector3(Speed * Time.deltaTime, 0f);
