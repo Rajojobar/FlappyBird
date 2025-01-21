@@ -16,7 +16,7 @@ public class Level : MonoBehaviour
 
 
     void Start(){
+        InvokeRepeating("SpawnTuyau", 1f, 1f);  //1s delay, repeat every 1s
         SpawnTuyau();
     }
-
 }
