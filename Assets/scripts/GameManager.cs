@@ -14,6 +14,10 @@ public TextMeshProUGUI scoreText;
     public CanvasGroup gameOverMenu;
     public Button restartButton;
     
+
+    public AudioSource sonPoint;
+    public AudioSource sonMort;
+
     private void Start()
     {
         Time.timeScale = 0f;
@@ -25,6 +29,8 @@ public TextMeshProUGUI scoreText;
         Score++;
         scoreText.text = "Score : " + Score;
         Debug.Log("+1:"+Score);
+
+        sonPoint.Play();
     }
 
     void registerScore(){
@@ -44,6 +50,7 @@ public TextMeshProUGUI scoreText;
         registerScore();
         scoreText.text = "You died and meilleur score est "+PlayerPrefs.GetInt("best_score");
         gameOverMenu.gameObject.SetActive(true);
+        sonMort.Play();
     }
 
     public void killPlayer(){
@@ -61,4 +68,6 @@ public TextMeshProUGUI scoreText;
             Time.timeScale = 1f;
         }
     }
+
+    
 }

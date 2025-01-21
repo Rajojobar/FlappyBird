@@ -4,8 +4,10 @@ public class Joueur : MonoBehaviour
 {
 
     Rigidbody2D Rigidbody;
-    bool isJumping;
+    public bool isJumping;
     public float forceSaut;
+
+    public AudioSource sonSaut;
 
     void Start(){
         Rigidbody = GetComponent<Rigidbody2D>();
@@ -14,6 +16,7 @@ public class Joueur : MonoBehaviour
     void Update(){
         if(Input.GetKeyDown(KeyCode.Space)){
             isJumping = true;
+            sonSaut.Play();
         }
     }
 
